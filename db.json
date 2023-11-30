@@ -55,6 +55,13 @@
       "article": "Brisingr",
       "isRead": false,
       "id": 8
+    },
+    {
+      "author": "J.K. Rowling",
+      "title": "Harry Potter",
+      "article": "Avada Kedavra",
+      "isRead": false,
+      "id": 9
     }
   ]
 }
