@@ -9,6 +9,7 @@ function App() {
 
   const [blogs, setBlogs] = useState([]);
   const [formShown, setFormShown] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:4000/blogs")
@@ -25,14 +26,16 @@ function App() {
     setBlogs(newBlogs);
   }
 
+  const searchedBlogs = blogs.filter((blog) => blog.title.toLowerCase().includes(search.toLowerCase()) || blog.author.toLowerCase().includes(search.toLowerCase()))
+
   return (
     <div className="App">
-      <Header></Header>
+      <Header search={search} setSearch={setSearch}></Header>
 
       <button className="show-form" onClick={renderForm}>Show Form</button>
       {formShown ? <NewPostForm renderNewBlog={renderNewBlog}></NewPostForm> : null}
 
-      <BlogPostContainer blogs={blogs}></BlogPostContainer>
+      <BlogPostContainer blogs={searchedBlogs}></BlogPostContainer>
     </div>
   );
 }
